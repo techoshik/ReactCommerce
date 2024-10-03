@@ -1,46 +1,85 @@
-# Getting Started with Create React App
+# ReactCommerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## authentication
 
-## Available Scripts
+- signup with email
+- login
+- forgot password
 
-In the project directory, you can run:
+## dashboard
 
-### `npm start`
+- product list
+- cart icon
+- search
+- account icon (show dropdown on click; show logout button and other options)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## wishlist
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- add product
+- remove product
 
-### `npm test`
+## search
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- by name
+- by voice (optional)
+- filters (by gender)
 
-### `npm run build`
+## product category
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- list
+- add
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## products
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- product list (buttons: cart, wishlist)
+- details with zoom in on hover
+- details page (buttons: wishlist, cart)
+- add products
 
-### `npm run eject`
+## reviews
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- products
+- website experience
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## cart
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- add/remove products
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## orders
 
-## Learn More
+- create (payment type)
+- track order
+- status
+- return & refund
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## footer
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- show logged in user details
+- links (orders, wishlist, cart, support/help)
+
+## support
+
+- help center
+
+## Offers
+
+- create new offers for given time when create/update product
+
+## users
+
+- profile
+- delete account
+- reset password
+
+## Folder structure
+
+- pages: for routing
+- components: parts of pages
+- models: handle data objects
+- services: handle data transactions
+- utils: contains utility functions
+- configs: contains project configurations
+- constants: fixed values
+
+## DATA FLOW
+CLIENT/UI  <--API REQUEST--> SERVER(PROCESSING) <--DATABASE-->
