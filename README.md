@@ -83,3 +83,18 @@
 
 ## DATA FLOW
 CLIENT/UI  <--API REQUEST--> SERVER(PROCESSING) <--DATABASE-->
+
+## CRUD Operations
+
+C - create
+R - read
+U - update
+D - delete
+
+<!-- DATABASE TYPES -->
+1. SQL(Postgres) - STRUCTURED QUERY LANGUAGE
+2. NoSQL (MongoDB) - ID is required, EVERYTHING ELSE IS OPTIONAL
+{"name": "John Doe", "age": 22}
+{"name": "John Doe", "age": 22, "email": "<abc@def.com>"}
+
+3. KEY-VALUE DATABASES (redis)
