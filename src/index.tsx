@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import LoginPage from './pages/login';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+// import SignUpPage from './pages/signup';
 
 const theme = createTheme({});
 
@@ -14,6 +15,8 @@ root.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <LoginPage />
+
+      {/* <SignUpPage /> */}
     </ThemeProvider>
   </React.StrictMode>
 );
