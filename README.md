@@ -1,106 +1,40 @@
-# ReactCommerce
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## authentication
+## Getting Started
 
-- signup with email
-- login
-- forgot password
+First, run the development server:
 
-## dashboard
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- product list
-- cart icon
-- search
-- account icon (show dropdown on click; show logout button and other options)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## wishlist
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-- add product
-- remove product
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-## search
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-- by name
-- by voice (optional)
-- filters (by gender)
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## product category
+## Learn More
 
-- list
-- add
+To learn more about Next.js, take a look at the following resources:
 
-## products
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- product list (buttons: cart, wishlist)
-- details with zoom in on hover
-- details page (buttons: wishlist, cart)
-- add products
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## reviews
+## Deploy on Vercel
 
-- products
-- website experience
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## cart
-
-- add/remove products
-
-## orders
-
-- create (payment type)
-- track order
-- status
-- return & refund
-
-## footer
-
-- show logged in user details
-- links (orders, wishlist, cart, support/help)
-
-## support
-
-- help center
-
-## Offers
-
-- create new offers for given time when create/update product
-
-## users
-
-- profile
-- delete account
-- reset password
-
-## Folder structure
-
-- pages: for routing
-- components: parts of pages
-- models: handle data objects
-- services: handle data transactions
-- utils: contains utility functions
-- configs: contains project configurations
-- constants: fixed values
-
-## DATA FLOW
-CLIENT/UI  <--API REQUEST--> SERVER(PROCESSING) <--DATABASE-->
-
-## CRUD Operations
-
-C - create
-R - read
-U - update
-D - delete
-
-<!-- DATABASE TYPES -->
-1. SQL(Postgres) - STRUCTURED QUERY LANGUAGE
-2. NoSQL (MongoDB) - ID is required, EVERYTHING ELSE IS OPTIONAL
-{"name": "John Doe", "age": 22}
-{"name": "John Doe", "age": 22, "email": "<abc@def.com>"}
-
-3. KEY-VALUE DATABASES (redis)
-
-# STATES
-
-- component specific
-
-- common/app state
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
