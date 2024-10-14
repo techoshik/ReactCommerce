@@ -98,3 +98,9 @@ D - delete
 {"name": "John Doe", "age": 22, "email": "<abc@def.com>"}
 
 3. KEY-VALUE DATABASES (redis)
+
+# STATES
+
+- component specific
+
+- common/app state

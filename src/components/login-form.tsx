@@ -1,28 +1,46 @@
 
 import { Facebook, Google } from "@mui/icons-material";
-import { Button, Typography, Card, Link, Stack, TextField, Container } from "@mui/material";
+import { Button, Typography, Card, Link, Stack, TextField, Container, Dialog, CircularProgress } from "@mui/material";
 import { useState } from "react";
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setLoading] = useState(false);
+  // const [errors, setErrors] = useState([]);
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
   };
 
-  const login = () => {
+  const login = async () => {
     console.log({ email, password });
+    setLoading(true);
+
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const todo = await response.json();
+    console.log({ todo });
+
+    setLoading(false);
+
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 3000);
   };
 
   return <>
+
     <Container sx={{
       display: "grid",
       justifyContent: "center",
       alignItems: "center",
       height: "100vh",
     }}>
+      <Dialog open={isLoading} sx={{ minHeight: 100, minWidth: 100, padding: 1 }}>
+        <CircularProgress />
+      </Dialog>
+
       <Card elevation={5} sx={{
         margin: 2,
         padding: 2,

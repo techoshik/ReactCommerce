@@ -12,6 +12,7 @@ export default function SignUp() {
   const Signup = () => {
     console.log({ name, email, phoneNumber, Password, ConfirmPassword })
   }
+
   return <>
     <Container sx={{
       display: "grid",
