@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export interface UserProfilePageProps {
   userId: string;
 }
