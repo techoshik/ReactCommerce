@@ -1,0 +1,24 @@
+Hooks
+- functions
+- link to state and lifecycle changes
+
+Rules
+- only inside functions
+- top level component
+- cannot be conditional
+
+useState
+SYNTEX: const [count, setCount] = useState(0);
+- handle state for a component
+- return array with 2 values (variable, setter)
+
+useEffect
+SYNTEX: useEffect(callback-fun, dependencies-array);
+- 1 time, initialize: useEffect(callback-fun, []);
+- rerun on every state changes: useEffect(callback-fun);
+
+
+useContext
+- same like useState
+
+
