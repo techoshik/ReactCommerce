@@ -1,0 +1,7 @@
+1. data / models
+  id: string
+  title: string
+  created_by: string  // user id
+  created_at: Date / string
+  // updated_at: Date / string
+  // updated_by: string  // user id
