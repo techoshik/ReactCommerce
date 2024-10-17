@@ -15,7 +15,7 @@ SYNTEX: const [count, setCount] = useState(0);
 useEffect
 SYNTEX: useEffect(callback-fun, dependencies-array);
 - 1 time, initialize: useEffect(callback-fun, []);
-- rerun on every state changes: useEffect(callback-fun);
+- retun on every state changes: useEffect(callback-fun);
 
 
 useContext
