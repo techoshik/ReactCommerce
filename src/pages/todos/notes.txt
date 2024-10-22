@@ -5,3 +5,21 @@
   created_at: Date / string
   // updated_at: Date / string
   // updated_by: string  // user id
+
+
+
+FILE META-TYPE
+<APPLICATION>/<EXTENSION>
+
+image/png
+image/jpeg
+image/jpg
+image/*
+
+audio/mp3
+audio/*
+
+video/3gp
+video/*
+
+application/pdf

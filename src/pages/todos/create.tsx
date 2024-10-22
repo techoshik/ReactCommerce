@@ -2,10 +2,27 @@ import { FormEvent, useState } from "react";
 
 export default function CreateTodoPage() {
   const [title, setTitle] = useState('');
+  const [image, setImage] = useState<FileList | null>();
   const [titleError, setTitleError] = useState('');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  async function readFile(): Promise<string> {
+    const random = Math.random() * 100;
+
+    if (random < 50) {
+      throw new Error("Random number not allowed: " + random);
+    }
+    return `Hello, ${random}!`;
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    try {
+      const value = await readFile();
+      console.log({ value });
+    } catch (error) {
+      console.log('Error in running randomString()', error);
+    }
 
     setTitleError('');
 
@@ -21,6 +38,7 @@ export default function CreateTodoPage() {
     console.log({ titleTrimmed });
     const data = {
       title: titleTrimmed,
+      file: image,
     };
 
     fetch("https://jsonplaceholder.typicode.com/todos", {
@@ -36,6 +54,19 @@ export default function CreateTodoPage() {
     }).finally(() => {
       console.log("Finally");
     });
+
+    try {
+      const response = await fetch("https://1jsonplaceholder.typicode.com/todos", {
+        method: "post",
+        body: JSON.stringify(data),
+      });
+      const json = await response.json();
+      console.log({ json });
+    } catch (error) {
+      console.log({ error });
+    } finally {
+      console.log("Finally");
+    }
   };
 
   return <div style={{ padding: 30 }}>
@@ -44,6 +75,15 @@ export default function CreateTodoPage() {
       <input name="title" placeholder="Title" value={title} onChange={(event) => {
         setTitle(event.target.value);
       }} />
+      <br />
+      <input name="file" type="file" accept="image/*" placeholder="Profile pic" onChange={(event) => {
+        const list = event.target.files;
+        console.log({ list });
+        setImage(list);
+      }} />
+      <br />
+      <img src={image?.length ? image?.item(0)?.webkitRelativePath : ""} alt="Selected Pic" width="100" height="100" />
+      <br />
       <button type="submit">Save</button>
 
       <p style={{ color: "red" }}>{titleError}</p>
