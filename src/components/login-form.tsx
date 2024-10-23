@@ -3,11 +3,16 @@ import { Facebook, Google } from "@mui/icons-material";
 import { Button, Typography, Card, Link, Stack, TextField, Container, Dialog, CircularProgress } from "@mui/material";
 import { useState } from "react";
 
-export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setLoading] = useState(false);
-  // const [errors, setErrors] = useState([]);
+interface LoginFormProps {
+  loading: boolean;
+  setLoading(loading: boolean): void;
+}
+
+export default function LoginForm(props: LoginFormProps) {
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const newPassword = event.target.value;
@@ -18,15 +23,15 @@ export default function LoginForm() {
     console.log({ email, password });
     setLoading(true);
 
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-    const todo = await response.json();
-    console.log({ todo });
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+      const todo = await response.json();
+      console.log({ todo });
+    } catch (error) {
+      setErrors([`${error}`]);
+    }
 
     setLoading(false);
-
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 3000);
   };
 
   return <>
@@ -72,9 +77,18 @@ export default function LoginForm() {
 
           <TextField type="password" placeholder="Password" fullWidth onChange={handlePasswordChange} />
 
+          {/* {errors.map((error) => {
+            console.log(error);
+            return (
+              <Typography key={error} color="error">{error}</Typography>
+            );
+          })} */}
+
+          {errors.map((error, index) => <Typography key={error} color="error">{error}</Typography>)}
+
           <Stack direction={"column"} >
 
-            <Button variant="contained" fullWidth onClick={login}>
+            <Button variant="contained" fullWidth onClick={login} disabled={props.loading}>
               Sign In
             </Button>
 
