@@ -1,4 +1,7 @@
+import { firebaseDatabase } from "@/configs/firebase-config";
+import { doc, setDoc } from "firebase/firestore";
 import { FormEvent, useState } from "react";
+import { v4 } from 'uuid';
 
 export default function CreateTodoPage() {
   const [title, setTitle] = useState('');
@@ -17,12 +20,12 @@ export default function CreateTodoPage() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      const value = await readFile();
-      console.log({ value });
-    } catch (error) {
-      console.log('Error in running randomString()', error);
-    }
+    // try {
+    //   const value = await readFile();
+    //   console.log({ value });
+    // } catch (error) {
+    //   console.log('Error in running randomString()', error);
+    // }
 
     setTitleError('');
 
@@ -41,32 +44,50 @@ export default function CreateTodoPage() {
       file: image,
     };
 
-    fetch("https://jsonplaceholder.typicode.com/todos", {
-      method: "post",
-      body: JSON.stringify(data),
-    }).then((response) => {
-      console.log({ response });
-      return response.json();
-    }).then((json) => {
-      console.log({ json });
-    }).catch((reason) => {
-      console.log({ reason });
-    }).finally(() => {
-      console.log("Finally");
-    });
+    // fetch("https://jsonplaceholder.typicode.com/todos", {
+    //   method: "post",
+    //   body: JSON.stringify(data),
+    // }).then((response) => {
+    //   console.log({ response });
+    //   return response.json();
+    // }).then((json) => {
+    //   console.log({ json });
+    // }).catch((reason) => {
+    //   console.log({ reason });
+    // }).finally(() => {
+    //   console.log("Finally");
+    // });
+
+    // try {
+    //   const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
+    //     method: "post",
+    //     body: JSON.stringify(data),
+    //   });
+    //   const json = await response.json();
+    //   console.log({ json });
+    // } catch (error) {
+    //   console.log({ error });
+    // } finally {
+    //   console.log("Finally");
+    // }
 
     try {
-      const response = await fetch("https://1jsonplaceholder.typicode.com/todos", {
-        method: "post",
-        body: JSON.stringify(data),
-      });
-      const json = await response.json();
-      console.log({ json });
+      const id = v4();
+      const requestData = {
+        title: titleTrimmed,
+        completed: false,
+      };
+
+      const newTodoDoc = doc(firebaseDatabase, 'todos', id);
+      await setDoc(newTodoDoc, requestData);
+
+      window.location.href = "/todos";
+
     } catch (error) {
       console.log({ error });
-    } finally {
-      console.log("Finally");
     }
+
+
   };
 
   return <div style={{ padding: 30 }}>
@@ -76,14 +97,14 @@ export default function CreateTodoPage() {
         setTitle(event.target.value);
       }} />
       <br />
-      <input name="file" type="file" accept="image/*" placeholder="Profile pic" onChange={(event) => {
+      {/* <input name="file" type="file" accept="image/*" placeholder="Profile pic" onChange={(event) => {
         const list = event.target.files;
         console.log({ list });
         setImage(list);
       }} />
       <br />
       <img src={image?.length ? image?.item(0)?.webkitRelativePath : ""} alt="Selected Pic" width="100" height="100" />
-      <br />
+      <br /> */}
       <button type="submit">Save</button>
 
       <p style={{ color: "red" }}>{titleError}</p>
